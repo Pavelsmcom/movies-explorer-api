@@ -9,4 +9,4 @@
 `npm run start` — запускает сервер
 `npm run dev` — запускает сервер с hot-reload
 
-[Ссылка на github]()
+[Ссылка на backend](https://api.movies.pavelsm.nomoredomains.monster)
