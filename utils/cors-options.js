@@ -1,3 +1,3 @@
 module.exports.corsOptions = {
-  origin: ['http://mesto.pavelsm.nomoredomains.work', 'https://mesto.pavelsm.nomoredomains.work', 'https://pavelsm.com', 'http://pavelsm.com'],
+  origin: ['http://movies-explorer.pavelsm.nomoredomains.monster', 'https://movies-explorer.pavelsm.nomoredomains.monster'],
 };

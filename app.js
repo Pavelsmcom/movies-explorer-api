@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const routes = require('./routes/index');
 
-const { corsOptions } = require('./utils/cors-options');
+// const { corsOptions } = require('./utils/cors-options'); // добавлю после деплоя фронтенда
 const { limiter } = require('./utils/ratelimit-options');
 
 const errorMiddleware = require('./middlewares/error-middleware');
