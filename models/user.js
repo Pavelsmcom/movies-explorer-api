@@ -3,12 +3,14 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 
 const UnauthorizedError = require('../utils/errors/unauthorized-error');
+const errorMessages = require('../utils/errors/errors-messages');
 
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
     minLength: 2,
     maxLength: 30,
+    required: true,
   },
   email: {
     type: String,
@@ -16,7 +18,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: (value) => validator.isEmail(value),
-      message: 'invalid email',
+      message: errorMessages.invalidEmail,
     },
   },
   password: {
@@ -26,25 +28,23 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// eslint-disable-next-line func-names
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        return Promise.reject(new UnauthorizedError('Incorrect username or password'));
+        return Promise.reject(new UnauthorizedError(errorMessages.usernameOrPasswordError));
       }
 
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            return Promise.reject(new UnauthorizedError('Incorrect username or password'));
+            return Promise.reject(new UnauthorizedError(errorMessages.usernameOrPasswordError));
           }
           return user;
         });
     });
 };
 
-// eslint-disable-next-line func-names
 userSchema.methods.toJSON = function () {
   const data = this.toObject();
 

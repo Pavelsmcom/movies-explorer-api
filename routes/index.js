@@ -6,6 +6,7 @@ const { login, createUser } = require('../controllers/user');
 const { validateSignIn, validateSignUp } = require('../utils/validation/validation');
 
 const NotFoundError = require('../utils/errors/not-found-error');
+const errorMessages = require('../utils/errors/errors-messages');
 
 router.post('/signin', validateSignIn, login);
 router.post('/signup', validateSignUp, createUser);
@@ -13,7 +14,7 @@ router.post('/signup', validateSignUp, createUser);
 router.use('/movies', auth, moviesRoutes);
 router.use('/users', auth, usersRoutes);
 router.use('/*', auth, (req, res, next) => {
-  next(new NotFoundError('Not Found'));
+  next(new NotFoundError(errorMessages.notFound));
 });
 
 module.exports = router;

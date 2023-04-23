@@ -15,7 +15,7 @@ const { limiter } = require('./utils/ratelimit-options');
 const errorMiddleware = require('./middlewares/error-middleware');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000, DB_SERVER } = process.env;
+const { PORT = 3000, DB_SERVER = '127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 const app = express();
 
@@ -35,15 +35,14 @@ app.use(errorMiddleware);
 mongoose
   .connect(`mongodb://${DB_SERVER}`)
   .then(() => {
-    // eslint-disable-next-line no-console
     console.log('Connect to DataBase');
   })
   .catch((error) => {
-    // eslint-disable-next-line no-console
     console.log(`Error DataBase ${error}`);
   });
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`App listening on port ${PORT}`);
 });
+
+// перенести сообщения в отдельный файл

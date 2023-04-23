@@ -6,6 +6,7 @@ const User = require('../models/user');
 const NotFoundError = require('../utils/errors/not-found-error');
 const BadRequestError = require('../utils/errors/bad-request-error');
 const ConflictError = require('../utils/errors/conflict-error');
+const errorMessages = require('../utils/errors/errors-messages');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -22,11 +23,11 @@ module.exports.createUser = (req, res, next) => {
     })
     .catch((error) => {
       if (error.code === 11000) {
-        next(new ConflictError('A user already exists'));
+        next(new ConflictError(errorMessages.conflict));
         return;
       }
       if (error.name === 'ValidationError') {
-        next(new BadRequestError('Bad Request'));
+        next(new BadRequestError(errorMessages.badRequest));
         return;
       }
       next(error);
@@ -52,11 +53,11 @@ module.exports.getMe = (req, res, next) => {
     .then((user) => res.send(user))
     .catch((error) => {
       if (error.name === 'CastError') {
-        next(new BadRequestError('Bad Request'));
+        next(new BadRequestError(errorMessages.badRequest));
         return;
       }
       if (error.name === 'DocumentNotFoundError') {
-        next(new NotFoundError('Not Found'));
+        next(new NotFoundError(errorMessages.notFound));
         return;
       }
       next(error);
@@ -74,19 +75,19 @@ module.exports.updateMe = (req, res, next) => {
     .catch((error) => {
       switch (error.name) {
         case 'ValidationError':
-          next(new BadRequestError('Bad Request'));
+          next(new BadRequestError(errorMessages.badRequest));
           break;
 
         case 'CastError':
-          next(new BadRequestError('Bad Request'));
+          next(new BadRequestError(errorMessages.badRequest));
           break;
 
         case 'MongoServerError':
-          next(new BadRequestError('Bad Request'));
+          next(new ConflictError(errorMessages.conflict));
           break;
 
         case 'DocumentNotFoundError':
-          next(new NotFoundError('Not Found'));
+          next(new NotFoundError(errorMessages.notFound));
           break;
 
         default:
