@@ -11,10 +11,16 @@ const errorMessages = require('../utils/errors/errors-messages');
 router.post('/signup', validateSignUp, createUser);
 router.post('/signin', validateSignIn, login);
 
-router.use('/movies', auth, moviesRoutes);
-router.use('/users', auth, usersRoutes);
-router.use('/*', auth, (req, res, next) => {
+router.use('/movies', moviesRoutes);
+router.use('/users', usersRoutes);
+router.use('/*', (req, res, next) => {
   next(new NotFoundError(errorMessages.notFound));
 });
+
+// router.use('/movies', auth, moviesRoutes);
+// router.use('/users', auth, usersRoutes);
+// router.use('/*', auth, (req, res, next) => {
+//   next(new NotFoundError(errorMessages.notFound));
+// });
 
 module.exports = router;
