@@ -15,7 +15,7 @@ const { limiter } = require('./utils/ratelimit-options');
 const errorMiddleware = require('./middlewares/error-middleware');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000, DB_SERVER = '127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT = 3000, DB_SERVER = '127.0.0.1:27017/bitfilmsdb2' } = process.env;
 
 const app = express();
 
@@ -45,4 +45,3 @@ app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
 
-// перенести сообщения в отдельный файл
