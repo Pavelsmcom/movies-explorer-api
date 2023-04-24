@@ -1,6 +1,6 @@
 {
   "name": "movies-explorer-api",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Diploma Back-end",
   "main": "app.js",
   "scripts": {
