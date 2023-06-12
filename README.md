@@ -33,7 +33,7 @@ https://movies-explorer.pavelsm.nomoredomains.monster
 
 Клонировать репозиторий:
 
-    git clone https://github.com/Pavelsmcom/movies-explorer-frontend.git
+    git clone https://github.com/Pavelsmcom/movies-explorer-api.git
 
 Установить зависимости:
 
@@ -49,7 +49,7 @@ https://movies-explorer.pavelsm.nomoredomains.monster
 
 ## backend расположен:
 
-[Ссылка на backend](https://api.movies.pavelsm.nomoredomains.monster)
+https://api.movies.pavelsm.nomoredomains.monster
 
 
 
