@@ -1,12 +1,55 @@
-# Дипломный проект на курсе "Веб-разработчик" в Яндекс-Практикуме - бэкенд часть
+## Backend часть дипломной работы Movies Explorer
 
-### Обзор
+Backend интерактивной SPA-страницы, на которой пользователи могут искать фильмы по ключевым словам и добавлять их в избранное.
 
-### Технологии:
+Frontend проекта расположен в [этом репозитории](https://github.com/Pavelsmcom/movies-explorer-frontend)
 
-### Запуск проекта
+## Ссылка на проект: 
 
-`npm run start` — запускает сервер
-`npm run dev` — запускает сервер с hot-reload
+https://movies-explorer.pavelsm.nomoredomains.monster
+
+## Скриншоты:
+
+<details><summary><b>Развернуть</b></summary>
+
+[![movies-explorer-frontend](https://pavelsm.com/GitPic/movies-explorer.png)
+</details>
+
+## Используемые технологии:
+* NodeJS
+* Express
+* MongoDB
+* Mongoose
+
+## Возможности приложения:
+
+- [x] Регистрация / Авторизация
+- [x] Изменение пользовательских данных (email, login)
+- [x] Поиск фильмов 
+- [x] Сохранение / удаление фильмов
+- [x] Сохранение данных при перезагрузке
+
+## Установка и запуск проекта:
+
+Клонировать репозиторий:
+
+    git clone https://github.com/Pavelsmcom/movies-explorer-frontend.git
+
+Установить зависимости:
+
+    npm i
+
+Запустить проект:
+
+    npm run start
+
+Запустить проект c hot-reload:
+
+    npm run dev
+
+## backend расположен:
 
 [Ссылка на backend](https://api.movies.pavelsm.nomoredomains.monster)
+
+
+
